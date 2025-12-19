@@ -108,8 +108,8 @@ const ProjectDetail = ({ project, onClose, onSwitchProject }) => {
     a: ({ href, children }) => (
       <a
         href={href}
-        target="_blank"
-        rel="noopener noreferrer"
+        target={() => scrollToSection('contact')}
+        rel=" "
         className="underline hover:opacity-70 transition-opacity"
       >
         {children}
@@ -137,13 +137,15 @@ const ProjectDetail = ({ project, onClose, onSwitchProject }) => {
       const isSmall = src?.includes('#small');
       const isSide = src?.includes('#side');
       const cleanSrc = src?.replace(/#(right|left|tiny|small|side)/g, '');
+      const isThisProject = project?.id === 'this';
+      const borderClass = isThisProject ? 'border-2 border-white' : '';
 
       // Tiny image - very small, inline
       if (isTiny) {
         return (
           <div className="flex justify-center my-6 clear-both">
             <div
-              className="relative max-w-[120px] overflow-hidden cursor-pointer group"
+              className={`relative max-w-[120px] overflow-hidden cursor-pointer group ${borderClass}`}
               onClick={() => setZoomedImage(cleanSrc)}
             >
               <img
@@ -161,7 +163,7 @@ const ProjectDetail = ({ project, onClose, onSwitchProject }) => {
         return (
           <div className="flex justify-center my-6 clear-both">
             <div
-              className="relative max-w-[200px] overflow-hidden cursor-pointer group"
+              className={`relative max-w-[200px] overflow-hidden cursor-pointer group ${borderClass}`}
               onClick={() => setZoomedImage(cleanSrc)}
             >
               <img
@@ -178,7 +180,7 @@ const ProjectDetail = ({ project, onClose, onSwitchProject }) => {
       if (isSide) {
         return (
           <div
-            className="inline-block w-[48%] mx-[1%] cursor-pointer group"
+            className={`inline-block w-[48%] mx-[1%] cursor-pointer group ${borderClass}`}
             onClick={() => setZoomedImage(cleanSrc)}
           >
             <img
@@ -193,7 +195,7 @@ const ProjectDetail = ({ project, onClose, onSwitchProject }) => {
       if (isRight || isLeft) {
         return (
           <div
-            className={`${isRight ? 'float-right ml-6 mb-4' : 'float-left mr-6 mb-4'} w-[20%] max-w-[180px] cursor-pointer group`}
+            className={`${isRight ? 'float-right ml-6 mb-4' : 'float-left mr-6 mb-4'} w-[20%] max-w-[180px] cursor-pointer group ${borderClass}`}
             onClick={() => setZoomedImage(cleanSrc)}
           >
             <img
@@ -208,7 +210,7 @@ const ProjectDetail = ({ project, onClose, onSwitchProject }) => {
       return (
         <div className="flex justify-center my-10 clear-both">
           <div
-            className="relative w-full max-w-[900px] overflow-hidden cursor-pointer group"
+            className={`relative w-full max-w-[900px] overflow-hidden cursor-pointer group ${borderClass}`}
             onClick={() => setZoomedImage(cleanSrc)}
           >
             <img
@@ -568,7 +570,16 @@ const ProjectDetail = ({ project, onClose, onSwitchProject }) => {
                       Let's work together on your next project
                     </p>
                     <button
-                      onClick={onClose}
+                      onClick={() => {
+                        onClose();
+                        // Small delay to allow overlay to close, then scroll to contact
+                        setTimeout(() => {
+                          const contactSection = document.getElementById('contact');
+                          if (contactSection) {
+                            contactSection.scrollIntoView({ behavior: 'smooth' });
+                          }
+                        }, 100);
+                      }}
                       className={`bg-black text-white px-6 py-3 font-${fonts.families.anton.toLowerCase()} uppercase hover:bg-white hover:text-black transition-colors border-2 border-black`}
                       style={{
                         fontSize: fonts.sizes.button.fontSize,

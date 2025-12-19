@@ -32,21 +32,21 @@ export const fonts = {
     subtitle: {
       fontSize: 'clamp(12px, 1.5vw, 20px)',
       letterSpacing: 'clamp(15px, 3.5vw, 46.6px)',
-      marginRight: 'clamp(-15px, -3.5vw, -46.6px)', // Fix centering
+      marginRight: 'clamp(-46.6px, -3.5vw, -15px)', // Fix centering
     },
 
     // Hero subtitle (e.g., "alice")
     heroSubtitle: {
-      fontSize: 'clamp(12px, 1.5vw, 20px)',
-      letterSpacing: 'clamp(20px, 7vw, 93.3px)',
-      marginRight: 'clamp(-20px, -7vw, -93.3px)',
+      fontSize: 'clamp(9.6px, 1.2vw, 16px)',
+      letterSpacing: 'clamp(16px, 5.6vw, 74.6px)',
+      marginRight: 'clamp(-74.6px, -5.6vw, -16px)',
     },
 
     // Main titles (e.g., "Projects", "About Me")
     title: {
-      fontSize: 'clamp(32px, 5vw, 64px)',
-      letterSpacing: 'clamp(2px, 0.35vw, 4.48px)',
-      marginRight: 'clamp(-2px, -0.35vw, -4.48px)',
+      fontSize: 'clamp(25.6px, 4vw, 51.2px)',
+      letterSpacing: 'clamp(1.6px, 0.28vw, 3.58px)',
+      marginRight: 'clamp(-3.58px, -0.28vw, -1.6px)',
     },
 
     // Section headings

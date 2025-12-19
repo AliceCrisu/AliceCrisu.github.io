@@ -14,9 +14,9 @@ const Hero = ({ lightOn, handleLightbulbClick }) => {
   };
 
   return (
-    <section id="home" className="w-full flex flex-col min-h-screen md:h-[92vh]" style={{ height: undefined }}>
+    <section id="home" className="w-full flex flex-col overflow-hidden" style={{ height: '95dvh', maxHeight: '100dvh' }}>
       {/* Title Area */}
-      <div className="w-full bg-white flex flex-col items-center gap-4 sm:gap-4 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-8 sm:py-6 md:py-0" style={{ paddingBottom: spacing.sectionVertical }}>
+      <div className="w-full bg-white flex flex-col items-center gap-1 sm:gap-1.5 md:gap-2 px-4 sm:px-6 md:px-10 lg:px-14 xl:px-16 py-2 sm:py-2.5 md:py-3 lg:py-4 flex-shrink-0">
         <p
           className={`font-${fonts.families.inter.toLowerCase()} ${fonts.weights.medium} text-black uppercase text-center`}
           style={{
@@ -42,10 +42,10 @@ const Hero = ({ lightOn, handleLightbulbClick }) => {
       </div>
 
       {/* Hero Content Area */}
-      <div className={`flex-1 w-full flex overflow-hidden relative transition-colors duration-500 min-h-[600px] md:min-h-0 ${lightOn ? 'bg-[#d4d4d4]' : 'bg-black'}`}>
+      <div className={`flex-1 w-full flex overflow-hidden relative transition-colors duration-500 ${lightOn ? 'bg-[#d4d4d4]' : 'bg-black'}`}>
         <div className="flex-1 flex flex-col relative" style={{ zIndex: 1 }}>
           {/* Lightbulb area */}
-          <div className="absolute left-1/2 md:right-[16%] md:left-auto lg:right-[15%] -translate-x-1/2 md:translate-x-0 flex flex-col items-center z-10 pt-8 sm:pt-8 md:pt-10 lg:pt-10 gap-1 sm:gap-1.5 md:gap-2 lg:gap-2.5 top-[-45px] sm:top-[-45px] md:top-[-52px]">
+          <div className="absolute left-1/2 md:right-[16%] md:left-auto lg:right-[15%] -translate-x-1/2 md:translate-x-0 flex flex-col items-center z-10" style={{ top: 'clamp(-32px, -2.5vw, -15px)' }}>
             <div className="relative" style={{ zIndex: 2 }}>
               {/* Halo effect */}
               {lightOn && (
@@ -89,9 +89,9 @@ const Hero = ({ lightOn, handleLightbulbClick }) => {
                 </>
               )}
               <div
-                className="relative cursor-pointer inline-block w-28 sm:w-32 md:w-32 lg:w-40 xl:w-42 2xl:w-60"
+                className="relative cursor-pointer inline-block"
                 onClick={handleLightbulbClick}
-                style={{ zIndex: 4 }}
+                style={{ zIndex: 4, width: 'clamp(5rem, 10vw, 12rem)' }}
               >
                 <img
                   src="/off.png"
@@ -116,14 +116,15 @@ const Hero = ({ lightOn, handleLightbulbClick }) => {
           </div>
 
           {/* Magazine-style content area */}
-          <div className="absolute left-0 right-0 top-[48%] md:top-1/2 -translate-y-1/2 px-6 md:px-0" style={{ zIndex: 5 }}>
+          <div className="absolute left-0 right-0 top-[50%] -translate-y-1/2 px-6 md:px-0" style={{ zIndex: 5 }}>
             {/* Shared Title Container - Exact same position for both modes */}
-            <div className={`absolute left-6 md:left-12 lg:left-24 max-w-[90%] md:max-w-[50vw] lg:max-w-[55vw] -top-8 sm:-top-5 md:-top-6 lg:-top-6 text-left transition-all duration-300 ${lightOn ? 'translate-x-4 md:translate-x-0' : 'translate-x-0'}`}>
+            <div className={`absolute left-6 md:left-12 lg:left-24 max-w-[90%] md:max-w-[50vw] lg:max-w-[55vw] -top-12 sm:-top-14 md:-top-16 lg:-top-20 text-left transition-all duration-300 ${lightOn ? 'translate-x-4 md:translate-x-0' : 'translate-x-0'}`}>
               <div>
                 {!lightOn ? (
                   <h2
-                    className="font-inter leading-tight uppercase text-[1.25rem] sm:text-[1.5rem] md:text-[2rem] lg:text-[2.2rem] xl:text-[2.45rem] 2xl:text-[3.5rem] font-black mb-3 sm:mb-2 md:mb-2 lg:mb-2.5"
+                    className="font-inter leading-tight uppercase font-black mb-2 sm:mb-2 md:mb-2 lg:mb-2.5"
                     style={{
+                      fontSize: 'clamp(1rem, 2.5vw, 2.8rem)',
                       letterSpacing: '-0.02em',
                       color: '#f5f5f5',
                       lineHeight: '1.1'
@@ -133,8 +134,9 @@ const Hero = ({ lightOn, handleLightbulbClick }) => {
                   </h2>
                 ) : (
                   <h2
-                    className="font-inter leading-tight uppercase text-[1.5rem] sm:text-[1.75rem] md:text-[2rem] lg:text-[2.2rem] xl:text-[2.45rem] 2xl:text-[3.5rem] font-black mb-3 sm:mb-2 md:mb-1.5 lg:mb-2 max-w-[280px] sm:max-w-none"
+                    className="font-inter leading-tight uppercase font-black mb-2 sm:mb-2 md:mb-1.5 lg:mb-2 max-w-[280px] sm:max-w-none"
                     style={{
+                      fontSize: 'clamp(1.2rem, 2.5vw, 2.8rem)',
                       letterSpacing: '-0.02em',
                       color: '#000000',
                       lineHeight: '1.1'
@@ -147,13 +149,14 @@ const Hero = ({ lightOn, handleLightbulbClick }) => {
             </div>
 
             {/* Content below title */}
-            <div className={`absolute left-6 md:left-12 lg:left-24 max-w-[90%] md:max-w-[50vw] lg:max-w-[55vw] top-14 sm:top-14 md:top-16 lg:top-[4.5rem] xl:top-[4rem] 2xl:top-[5.5rem] text-left transition-all duration-300 ${lightOn ? 'translate-x-4 md:translate-x-0' : 'translate-x-0'}`}>
+            <div className={`absolute left-6 md:left-12 lg:left-24 max-w-[90%] md:max-w-[50vw] lg:max-w-[55vw] top-4 sm:top-6 md:top-8 lg:top-10 text-left transition-all duration-300 ${lightOn ? 'translate-x-4 md:translate-x-0' : 'translate-x-0'}`}>
               {!lightOn ? (
                 // DARK MODE CONTENT
                 <div>
                   <p
-                    className="font-inter mb-4 sm:mb-4 md:mb-4 lg:mb-5 max-w-full lg:max-w-[90%] text-[0.875rem] sm:text-[0.95rem] md:text-[1rem] lg:text-[0.85rem] xl:text-[0.945rem] 2xl:text-[1.35rem]"
+                    className="font-inter mb-3 sm:mb-4 md:mb-4 lg:mb-5 max-w-full lg:max-w-[90%]"
                     style={{
+                      fontSize: 'clamp(0.8rem, 1.1vw, 1.35rem)',
                       letterSpacing: '0.01em',
                       color: '#d4d4d4',
                       fontWeight: '400',
@@ -163,8 +166,9 @@ const Hero = ({ lightOn, handleLightbulbClick }) => {
                     I bring structure and clarity to complex ideas, designing intuitive experiences that help people navigate products with ease. My work blends UX strategy and clean UI to create interfaces that simply make sense.
                   </p>
                   <p
-                    className="font-inter text-[0.8rem] sm:text-[0.85rem] md:text-[0.85rem] lg:text-[0.7rem] xl:text-[0.77rem] 2xl:text-[1.1rem]"
+                    className="font-inter"
                     style={{
+                      fontSize: 'clamp(0.7rem, 0.9vw, 1.1rem)',
                       letterSpacing: '0.02em',
                       color: '#b8b8b8',
                       fontWeight: '400',
@@ -176,17 +180,30 @@ const Hero = ({ lightOn, handleLightbulbClick }) => {
                 </div>
               ) : (
                 // LIGHT ON MODE CONTENT
-                <div className="w-full max-w-[280px] sm:max-w-[340px] md:max-w-[450px] lg:max-w-[500px] xl:max-w-[560px] 2xl:max-w-[800px]">
-                  <div className="mb-2 sm:mb-3 md:mb-4 lg:mb-6">
-                    <div className="flex items-stretch">
+                <div className="w-full">
+                  <p
+                    className="font-inter mb-3 sm:mb-4 md:mb-5 lg:mb-5 max-w-full lg:max-w-[90%]"
+                    style={{
+                      fontSize: 'clamp(0.8rem, 1.1vw, 1.35rem)',
+                      letterSpacing: '0.01em',
+                      color: '#333333',
+                      fontWeight: '400',
+                      lineHeight: '1.6'
+                    }}
+                  >
+                  Have an idea for an app, website, or SaaS? From B2B and B2C platforms to e-commerce, wearables, and games—let's build something great.</p>
+                  <div className="mb-2 sm:mb-3 md:mb-3 lg:mb-4">
+                    <div className="flex items-stretch" style={{ width: 'clamp(180px, 35vw, 560px)' }}>
                         <input
                           type="text"
-                          placeholder="What's your idea?"
+                          placeholder="So, what are we building ?"
                           value={ideaText}
                           onChange={(e) => setIdeaText(e.target.value)}
                           onKeyDown={(e) => e.key === 'Enter' && handleSendIdea()}
-                          className="font-inter border-2 border-black bg-white text-black flex-1 focus:outline-none focus:ring-2 focus:ring-black transition-all text-[0.9rem] sm:text-[0.95rem] md:text-[0.95rem] lg:text-[1.15rem] xl:text-[0.875rem] 2xl:text-[1.25rem] py-2 px-3 sm:py-2.5 sm:px-4 md:py-3 md:px-4 lg:py-4 lg:px-5"
+                          className="font-inter border-2 border-black bg-white text-black flex-1 focus:outline-none focus:ring-2 focus:ring-black transition-all"
                           style={{
+                            fontSize: 'clamp(0.75rem, 1vw, 1.25rem)',
+                            padding: 'clamp(0.5rem, 1vw, 1.25rem) clamp(0.75rem, 1.2vw, 1.5rem)',
                             letterSpacing: '0.01em',
                             borderTopRightRadius: 0,
                             borderBottomRightRadius: 0,
@@ -195,15 +212,16 @@ const Hero = ({ lightOn, handleLightbulbClick }) => {
                         />
                         <button
                           onClick={handleSendIdea}
-                          className="bg-black text-white hover:bg-gray-800 transition-all hover:scale-105 active:scale-95 flex items-center justify-center border-2 border-l-0 border-black py-2 px-3 sm:py-2.5 sm:px-4 md:py-3 md:px-4 lg:py-4 lg:px-5"
+                          className="bg-black text-white hover:bg-gray-800 transition-all hover:scale-105 active:scale-95 flex items-center justify-center border-2 border-l-0 border-black"
                           style={{
+                            padding: 'clamp(0.5rem, 1vw, 1.25rem) clamp(0.75rem, 1.2vw, 1.5rem)',
                             borderTopLeftRadius: 0,
                             borderBottomLeftRadius: 0
                           }}
                           aria-label="Send"
                         >
                           <svg
-                            className="w-3 h-3 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-6 xl:h-6"
+                            style={{ width: 'clamp(12px, 1.5vw, 24px)', height: 'clamp(12px, 1.5vw, 24px)' }}
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
@@ -219,7 +237,7 @@ const Hero = ({ lightOn, handleLightbulbClick }) => {
                   </div>
 
                   {/* Social Icons */}
-                  <div className="flex items-center mb-8 gap-3 sm:gap-4">
+                  <div className="flex items-center" style={{ gap: 'clamp(0.75rem, 1vw, 1.5rem)' }}>
                     <a
                       href="https://www.linkedin.com/in/alicecrisu/"
                       target="_blank"
@@ -229,7 +247,7 @@ const Hero = ({ lightOn, handleLightbulbClick }) => {
                         color: '#000000'
                       }}
                     >
-                      <svg className="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="currentColor">
+                      <svg style={{ width: 'clamp(18px, 1.5vw, 28px)', height: 'clamp(18px, 1.5vw, 28px)' }} viewBox="0 0 24 24" fill="currentColor">
                         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                       </svg>
                     </a>
@@ -240,7 +258,7 @@ const Hero = ({ lightOn, handleLightbulbClick }) => {
                         color: '#000000'
                       }}
                     >
-                      <svg className="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="currentColor">
+                      <svg style={{ width: 'clamp(18px, 1.5vw, 28px)', height: 'clamp(18px, 1.5vw, 28px)' }} viewBox="0 0 24 24" fill="currentColor">
                         <path d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"/>
                       </svg>
                     </a>
@@ -250,58 +268,6 @@ const Hero = ({ lightOn, handleLightbulbClick }) => {
             </div>
           </div>
 
-          {/* Right side - Editorial highlights - Centered underneath the bulb (only in light mode) */}
-          {lightOn && (
-            <div className="absolute left-20 top-[78%] md:top-[65%] md:left-auto md:right-[16%] lg:right-[15%]" style={{
-              maxWidth: 'min(90vw, 600px)'
-            }}>
-                    <h3
-                      className="font-inter mb-2 sm:mb-2.5 md:mb-3 lg:mb-4 uppercase text-[0.8rem] sm:text-[1.1rem] md:text-[1.6rem] lg:text-[1.8rem] xl:text-[1.96rem] 2xl:text-[2.8rem] font-black max-w-[180px] sm:max-w-none"
-                      style={{
-                        letterSpacing: '0.01em',
-                        color: '#000000',
-                        lineHeight: '1.2'
-                      }}
-                    >
-                      What you'll find here
-                    </h3>
-                    <ul className="space-y-1 sm:space-y-1.5 md:space-y-1.5 lg:space-y-2">
-                      <li
-                        className="font-inter text-[0.65rem] sm:text-[0.8rem] md:text-[1rem] lg:text-[0.8rem] xl:text-[0.875rem] 2xl:text-[1.25rem] relative pl-[1.2em]"
-                        style={{
-                          color: '#000000',
-                          fontWeight: '400',
-                          lineHeight: '1.4'
-                        }}
-                      >
-                        <span style={{ position: 'absolute', left: '0', color: '#000000' }}>•</span>
-                        Smarter fitness through wearables
-                      </li>
-                      <li
-                        className="font-inter text-[0.65rem] sm:text-[0.8rem] md:text-[1rem] lg:text-[0.8rem] xl:text-[0.875rem] 2xl:text-[1.25rem] relative pl-[1.2em]"
-                        style={{
-                          color: '#000000',
-                          fontWeight: '400',
-                          lineHeight: '1.4'
-                        }}
-                      >
-                        <span style={{ position: 'absolute', left: '0', color: '#000000' }}>•</span>
-                        An enterpise SaaS, redesigned
-                      </li>
-                      <li
-                        className="font-inter text-[0.65rem] sm:text-[0.8rem] md:text-[1rem] lg:text-[0.8rem] xl:text-[0.875rem] 2xl:text-[1.25rem] relative pl-[1.2em]"
-                        style={{
-                          color: '#000000',
-                          fontWeight: '400',
-                          lineHeight: '1.4'
-                        }}
-                      >
-                        <span style={{ position: 'absolute', left: '0', color: '#000000' }}>•</span>
-                        A UX designer excited about what we can build next.
-                      </li>
-                    </ul>
-            </div>
-          )}
         </div>
       </div>
     </section>

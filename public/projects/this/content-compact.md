@@ -1,4 +1,4 @@
-## Why is my portfolio itself a project?
+## Why is my portfolio listed as a project?
 
 My portfolio is listed as a project for two simple reasons: transparency and intention. This is the one place where you don’t just read about my process — you can experience it directly by navigating the site and interacting with it. Everything you see here reflects how I think and how I design.
 
