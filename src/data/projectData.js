@@ -24,10 +24,11 @@ export const projects = [
     name: "Cromzz",
     summary: "A fitness tracking app designed to help users achieve their health goals",
     backgroundImage: "projects/cromzz/overview.jpeg",
+    backgroundImageMobile: "",
     heroImage: "",
     galleryImages: [
       "projects/cromzz/overall.png",
-      "projects/cromzz/competition.png", 
+      "projects/cromzz/competition.png",
       "projects/cromzz/ramat.png",
       "projects/cromzz/create.png"
     ],
@@ -40,6 +41,7 @@ export const projects = [
     name: "Griffin",
     summary: "Griffin is a strategic operations platform that centralizes cash flow management, transaction oversight, customer management, and marketing campaign execution into a single, unified system.",
     backgroundImage: "projects/griffin/Overview.png",
+    backgroundImageMobile: "",
     heroImage: "projects/griffin/Overview.png",
     galleryImages: ["projects/griffin/gallery1.png", "projects/griffin/gallery2.png", "projects/griffin/gallery3.png", "projects/griffin/gallery4.png"],
     role: "UI/UX Designer",
@@ -51,6 +53,7 @@ export const projects = [
     name: "This Website",
     summary: "A personal portfolio website showcasing design projects and skills",
     backgroundImage: "projects/this/overview.png",
+    backgroundImageMobile: "projects/this/overview_mobile.png",
     heroImage: "",
     galleryImages: [],
     role: "",

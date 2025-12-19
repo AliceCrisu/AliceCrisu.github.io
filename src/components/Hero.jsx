@@ -1,15 +1,29 @@
 import { fonts, spacing, lineHeights } from '../theme';
 import { useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 
 const Hero = ({ lightOn, handleLightbulbClick }) => {
   const [ideaText, setIdeaText] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
+  const [email, setEmail] = useState('');
+  const [state, handleSubmit] = useForm("xykgkjkq");
 
-  const handleSendIdea = () => {
+  const handleSendClick = () => {
     if (ideaText.trim()) {
-      // For now, just log it - you can add email functionality later
-      console.log('User idea:', ideaText);
-      alert(`Thanks for sharing! Your idea: "${ideaText}"`);
+      setShowPopup(true);
+    }
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    await handleSubmit(e);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+    if (state.succeeded) {
       setIdeaText('');
+      setEmail('');
     }
   };
 
@@ -192,47 +206,50 @@ const Hero = ({ lightOn, handleLightbulbClick }) => {
                     }}
                   >
                   Have an idea for an app, website, or SaaS? From B2B and B2C platforms to e-commerce, wearables, and games—let's build something great.</p>
+
                   <div className="mb-2 sm:mb-3 md:mb-3 lg:mb-4">
+                    {/* Idea input row */}
                     <div className="flex items-stretch" style={{ width: 'clamp(180px, 35vw, 560px)' }}>
-                        <input
-                          type="text"
-                          placeholder="So, what are we building ?"
-                          value={ideaText}
-                          onChange={(e) => setIdeaText(e.target.value)}
-                          onKeyDown={(e) => e.key === 'Enter' && handleSendIdea()}
-                          className="font-inter border-2 border-black bg-white text-black flex-1 focus:outline-none focus:ring-2 focus:ring-black transition-all"
-                          style={{
-                            fontSize: 'clamp(0.75rem, 1vw, 1.25rem)',
-                            padding: 'clamp(0.5rem, 1vw, 1.25rem) clamp(0.75rem, 1.2vw, 1.5rem)',
-                            letterSpacing: '0.01em',
-                            borderTopRightRadius: 0,
-                            borderBottomRightRadius: 0,
-                            minWidth: 0
-                          }}
-                        />
-                        <button
-                          onClick={handleSendIdea}
-                          className="bg-black text-white hover:bg-gray-800 transition-all hover:scale-105 active:scale-95 flex items-center justify-center border-2 border-l-0 border-black"
-                          style={{
-                            padding: 'clamp(0.5rem, 1vw, 1.25rem) clamp(0.75rem, 1.2vw, 1.5rem)',
-                            borderTopLeftRadius: 0,
-                            borderBottomLeftRadius: 0
-                          }}
-                          aria-label="Send"
+                      <input
+                        type="text"
+                        placeholder="So, what are we building?"
+                        value={ideaText}
+                        onChange={(e) => setIdeaText(e.target.value)}
+                        onKeyDown={(e) => e.key === 'Enter' && ideaText.trim() && handleSendClick()}
+                        className="font-inter border-2 border-black bg-white text-black flex-1 focus:outline-none focus:ring-2 focus:ring-black transition-all"
+                        style={{
+                          fontSize: 'clamp(0.75rem, 1vw, 1.25rem)',
+                          padding: 'clamp(0.5rem, 1vw, 1.25rem) clamp(0.75rem, 1.2vw, 1.5rem)',
+                          letterSpacing: '0.01em',
+                          borderTopRightRadius: 0,
+                          borderBottomRightRadius: 0,
+                          minWidth: 0
+                        }}
+                      />
+                      <button
+                        type="button"
+                        onClick={handleSendClick}
+                        className="bg-black text-white hover:bg-gray-800 transition-all hover:scale-105 active:scale-95 flex items-center justify-center border-2 border-l-0 border-black"
+                        style={{
+                          padding: 'clamp(0.5rem, 1vw, 1.25rem) clamp(0.75rem, 1.2vw, 1.5rem)',
+                          borderTopLeftRadius: 0,
+                          borderBottomLeftRadius: 0
+                        }}
+                        aria-label="Send"
+                      >
+                        <svg
+                          style={{ width: 'clamp(12px, 1.5vw, 24px)', height: 'clamp(12px, 1.5vw, 24px)' }}
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         >
-                          <svg
-                            style={{ width: 'clamp(12px, 1.5vw, 24px)', height: 'clamp(12px, 1.5vw, 24px)' }}
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          >
-                            <line x1="22" y1="2" x2="11" y2="13"></line>
-                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                          </svg>
-                        </button>
+                          <line x1="22" y1="2" x2="11" y2="13"></line>
+                          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                      </button>
                     </div>
                   </div>
 
@@ -270,6 +287,103 @@ const Hero = ({ lightOn, handleLightbulbClick }) => {
 
         </div>
       </div>
+
+      {/* Email Popup Modal */}
+      {showPopup && (
+        <div
+          className="fixed inset-0 bg-black/60 flex items-center justify-center p-4"
+          style={{ zIndex: 1000 }}
+          onClick={(e) => e.target === e.currentTarget && closePopup()}
+        >
+          <div
+            className="bg-white p-6 md:p-8 max-w-md w-full relative"
+            style={{ border: '2px solid black' }}
+          >
+            {/* Close button */}
+            <button
+              onClick={closePopup}
+              className="absolute top-4 right-4 text-black hover:opacity-70 transition-opacity"
+              aria-label="Close"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+
+            {state.succeeded ? (
+              <div className="text-center py-4">
+                <h3
+                  className={`font-${fonts.families.anton.toLowerCase()} text-black uppercase mb-4`}
+                  style={{ fontSize: 'clamp(20px, 2.5vw, 28px)', letterSpacing: '0.02em' }}
+                >
+                  Thanks!
+                </h3>
+                <p
+                  className={`font-${fonts.families.montserrat.toLowerCase()} text-black/70`}
+                  style={{ fontSize: fonts.sizes.body.fontSize }}
+                >
+                  I'll get back to you soon with thoughts on your idea.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleFormSubmit}>
+                <h3
+                  className={`font-${fonts.families.anton.toLowerCase()} text-black uppercase mb-2`}
+                  style={{ fontSize: 'clamp(20px, 2.5vw, 28px)', letterSpacing: '0.02em' }}
+                >
+                  Almost there!
+                </h3>
+                <p
+                  className={`font-${fonts.families.montserrat.toLowerCase()} text-black/70 mb-6`}
+                  style={{ fontSize: fonts.sizes.small.fontSize }}
+                >
+                  Enter your email so I can get back to you about:
+                </p>
+
+                {/* Display the idea */}
+                <div
+                  className="bg-black/5 p-3 mb-4"
+                  style={{ fontSize: fonts.sizes.small.fontSize }}
+                >
+                  <p className={`font-${fonts.families.montserrat.toLowerCase()} text-black italic`}>
+                    "{ideaText}"
+                  </p>
+                </div>
+
+                {/* Hidden idea field for form submission */}
+                <input type="hidden" name="idea" value={ideaText} />
+
+                <div className="mb-4">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="your.email@example.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className={`w-full px-4 py-3 font-${fonts.families.montserrat.toLowerCase()} border-2 border-black bg-white text-black placeholder:text-black/50 focus:outline-none focus:ring-2 focus:ring-black`}
+                    style={{ fontSize: fonts.sizes.small.fontSize }}
+                  />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-600 text-sm mt-1" />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={state.submitting}
+                  className={`w-full bg-black text-white font-${fonts.families.anton.toLowerCase()} uppercase px-6 py-3 hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed`}
+                  style={{
+                    fontSize: fonts.sizes.button.fontSize,
+                    letterSpacing: fonts.sizes.button.letterSpacing
+                  }}
+                >
+                  {state.submitting ? 'Sending...' : 'Send'}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
     </section>
   );
 };

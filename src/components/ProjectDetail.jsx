@@ -9,6 +9,14 @@ const ProjectDetail = ({ project, onClose, onSwitchProject }) => {
   const [markdownContent, setMarkdownContent] = useState('');
   const [loading, setLoading] = useState(true);
   const [activeCardIndex, setActiveCardIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  // Track window resize for mobile image switching
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Load markdown content for the project (different file based on toggle)
   useEffect(() => {
@@ -57,7 +65,7 @@ const ProjectDetail = ({ project, onClose, onSwitchProject }) => {
         style={{
           fontSize: fonts.sizes.heading.fontSize,
           letterSpacing: fonts.sizes.heading.letterSpacing,
-          lineHeight: lineHeights.tight
+          lineHeight: 'clamp(1.3, 1.2 + 0.1vw, 1.095)'
         }}
       >
         {children}
@@ -341,7 +349,7 @@ const ProjectDetail = ({ project, onClose, onSwitchProject }) => {
 
         {/* Project Content */}
         <div className="w-full bg-white flex justify-center relative" style={{ paddingBottom: spacing.sectionBottom }}>
-          <div className="w-full max-w-[1600px] px-8 py-6 md:px-20 md:py-12 lg:px-28 lg:py-16 relative bg-black overflow-hidden">
+          <div className="w-full max-w-[1600px] py-6 md:py-12 lg:py-16 relative bg-black overflow-hidden" style={{ padding: 'clamp(1.5rem, 4vw, 7rem)' }}>
             {/* Hero Image Stack - Vista Aero alt-tab style */}
             <div className="w-full relative mb-8 md:mb-16 py-6 md:py-12 overflow-visible touch-pan-y">
               {(() => {
@@ -605,7 +613,7 @@ const ProjectDetail = ({ project, onClose, onSwitchProject }) => {
                       {leftProject && (
                         <div
                           className="relative w-[240px] h-[150px] overflow-hidden cursor-pointer transition-transform hover:scale-[1.02] border-4 border-black bg-cover bg-center"
-                          style={{ backgroundImage: `url(${leftProject.backgroundImage})` }}
+                          style={{ backgroundImage: `url(${isMobile && leftProject.backgroundImageMobile ? leftProject.backgroundImageMobile : leftProject.backgroundImage})` }}
                           onClick={() => onSwitchProject && onSwitchProject(leftProject)}
                         >
                           <div className="absolute inset-0 bg-black/30" />
@@ -625,7 +633,7 @@ const ProjectDetail = ({ project, onClose, onSwitchProject }) => {
                       {rightProject && (
                         <div
                           className="relative w-[240px] h-[150px] overflow-hidden cursor-pointer transition-transform hover:scale-[1.02] border-4 border-black bg-cover bg-center"
-                          style={{ backgroundImage: `url(${rightProject.backgroundImage})` }}
+                          style={{ backgroundImage: `url(${isMobile && rightProject.backgroundImageMobile ? rightProject.backgroundImageMobile : rightProject.backgroundImage})` }}
                           onClick={() => onSwitchProject && onSwitchProject(rightProject)}
                         >
                           <div className="absolute inset-0 bg-black/30" />

@@ -1,7 +1,10 @@
+import { useForm, ValidationError } from '@formspree/react';
 import { fonts, spacing, borders, lineHeights } from '../theme';
 import SectionTitle from './SectionTitle';
 
 const Contact = () => {
+  const [state, handleSubmit] = useForm("xykgkjkq");
+
   return (
     <>
       <SectionTitle id="contact" subtitle="let's talk" title="Contact Me" />
@@ -47,94 +50,127 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div
-            className="bg-black p-4 md:p-8 max-w-[800px] mx-auto w-full"
-          >
-            <form className="flex flex-col gap-5">
-              <div className="flex flex-col gap-2">
-                <label
-                  className={`font-${fonts.families.montserrat.toLowerCase()} text-white ${fonts.weights.medium}`}
-                  style={{ fontSize: fonts.sizes.small.fontSize }}
+          <div className="bg-black p-4 md:p-8 max-w-[800px] mx-auto w-full">
+            {state.succeeded ? (
+              <div className="text-center py-12">
+                <p
+                  className={`font-${fonts.families.anton.toLowerCase()} text-white uppercase`}
+                  style={{ fontSize: 'clamp(24px, 3vw, 36px)', letterSpacing: '0.02em' }}
                 >
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  className={`w-full px-4 py-3 font-${fonts.families.montserrat.toLowerCase()} border md:border-[length:var(--border-medium)] border-black bg-white text-black placeholder:text-black/50`}
+                  Thanks for reaching out!
+                </p>
+                <p
+                  className={`font-${fonts.families.montserrat.toLowerCase()} text-white/70 mt-4`}
+                  style={{ fontSize: fonts.sizes.body.fontSize }}
+                >
+                  I'll get back to you as soon as possible.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="name"
+                    className={`font-${fonts.families.montserrat.toLowerCase()} text-white ${fonts.weights.medium}`}
+                    style={{ fontSize: fonts.sizes.small.fontSize }}
+                  >
+                    Full Name
+                  </label>
+                  <input
+                    id="name"
+                    type="text"
+                    name="name"
+                    placeholder="Your name"
+                    className={`w-full px-4 py-3 font-${fonts.families.montserrat.toLowerCase()} border md:border-[length:var(--border-medium)] border-black bg-white text-black placeholder:text-black/50`}
+                    style={{
+                      fontSize: fonts.sizes.small.fontSize,
+                      '--border-medium': borders.medium
+                    }}
+                  />
+                  <ValidationError prefix="Name" field="name" errors={state.errors} className="text-red-400 text-sm" />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="email"
+                    className={`font-${fonts.families.montserrat.toLowerCase()} text-white ${fonts.weights.medium}`}
+                    style={{ fontSize: fonts.sizes.small.fontSize }}
+                  >
+                    Email Address
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="your.email@example.com"
+                    required
+                    className={`w-full px-4 py-3 font-${fonts.families.montserrat.toLowerCase()} border md:border-[length:var(--border-medium)] border-black bg-white text-black placeholder:text-black/50`}
+                    style={{
+                      fontSize: fonts.sizes.small.fontSize,
+                      '--border-medium': borders.medium
+                    }}
+                  />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} className="text-red-400 text-sm" />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="company"
+                    className={`font-${fonts.families.montserrat.toLowerCase()} text-white ${fonts.weights.medium}`}
+                    style={{ fontSize: fonts.sizes.small.fontSize }}
+                  >
+                    Company (Optional)
+                  </label>
+                  <input
+                    id="company"
+                    type="text"
+                    name="company"
+                    placeholder="Your company name"
+                    className={`w-full px-4 py-3 font-${fonts.families.montserrat.toLowerCase()} border md:border-[length:var(--border-medium)] border-black bg-white text-black placeholder:text-black/50`}
+                    style={{
+                      fontSize: fonts.sizes.small.fontSize,
+                      '--border-medium': borders.medium
+                    }}
+                  />
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="message"
+                    className={`font-${fonts.families.montserrat.toLowerCase()} text-white ${fonts.weights.medium}`}
+                    style={{ fontSize: fonts.sizes.small.fontSize }}
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Tell me about your project or inquiry..."
+                    rows="6"
+                    required
+                    className={`w-full px-4 py-3 font-${fonts.families.montserrat.toLowerCase()} resize-none border md:border-[length:var(--border-medium)] border-black bg-white text-black placeholder:text-black/50`}
+                    style={{
+                      fontSize: fonts.sizes.small.fontSize,
+                      '--border-medium': borders.medium
+                    }}
+                  />
+                  <ValidationError prefix="Message" field="message" errors={state.errors} className="text-red-400 text-sm" />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={state.submitting}
+                  className={`bg-white text-black font-${fonts.families.anton.toLowerCase()} uppercase px-8 py-4 hover:bg-black hover:text-white transition-colors self-start border md:border-[length:var(--border-medium)] border-white disabled:opacity-50 disabled:cursor-not-allowed`}
                   style={{
-                    fontSize: fonts.sizes.small.fontSize,
+                    fontSize: fonts.sizes.button.fontSize,
+                    letterSpacing: fonts.sizes.button.letterSpacing,
                     '--border-medium': borders.medium
                   }}
-                />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label
-                  className={`font-${fonts.families.montserrat.toLowerCase()} text-white ${fonts.weights.medium}`}
-                  style={{ fontSize: fonts.sizes.small.fontSize }}
                 >
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  placeholder="your.email@example.com"
-                  className={`w-full px-4 py-3 font-${fonts.families.montserrat.toLowerCase()} border md:border-[length:var(--border-medium)] border-black bg-white text-black placeholder:text-black/50`}
-                  style={{
-                    fontSize: fonts.sizes.small.fontSize,
-                    '--border-medium': borders.medium
-                  }}
-                />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label
-                  className={`font-${fonts.families.montserrat.toLowerCase()} text-white ${fonts.weights.medium}`}
-                  style={{ fontSize: fonts.sizes.small.fontSize }}
-                >
-                  Company (Optional)
-                </label>
-                <input
-                  type="text"
-                  placeholder="Your company name"
-                  className={`w-full px-4 py-3 font-${fonts.families.montserrat.toLowerCase()} border md:border-[length:var(--border-medium)] border-black bg-white text-black placeholder:text-black/50`}
-                  style={{
-                    fontSize: fonts.sizes.small.fontSize,
-                    '--border-medium': borders.medium
-                  }}
-                />
-              </div>
-
-              <div className="flex flex-col gap-2">
-                <label
-                  className={`font-${fonts.families.montserrat.toLowerCase()} text-white ${fonts.weights.medium}`}
-                  style={{ fontSize: fonts.sizes.small.fontSize }}
-                >
-                  Message
-                </label>
-                <textarea
-                  placeholder="Tell me about your project or inquiry..."
-                  rows="6"
-                  className={`w-full px-4 py-3 font-${fonts.families.montserrat.toLowerCase()} resize-none border md:border-[length:var(--border-medium)] border-black bg-white text-black placeholder:text-black/50`}
-                  style={{
-                    fontSize: fonts.sizes.small.fontSize,
-                    '--border-medium': borders.medium
-                  }}
-                />
-              </div>
-
-              <button
-                type="submit"
-                className={`bg-white text-black font-${fonts.families.anton.toLowerCase()} uppercase px-8 py-4 hover:bg-black hover:text-white transition-colors self-start border md:border-[length:var(--border-medium)] border-white`}
-                style={{
-                  fontSize: fonts.sizes.button.fontSize,
-                  letterSpacing: fonts.sizes.button.letterSpacing,
-                  '--border-medium': borders.medium
-                }}
-              >
-                Send Message
-              </button>
-            </form>
+                  {state.submitting ? 'Sending...' : 'Send Message'}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </section>

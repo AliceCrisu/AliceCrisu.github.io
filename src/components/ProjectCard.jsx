@@ -1,11 +1,24 @@
+import { useState, useEffect } from 'react';
 import { fonts, borders, lineHeights } from '../theme';
 
 const ProjectCard = ({ project, onClick }) => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const bgImage = isMobile && project.backgroundImageMobile
+    ? project.backgroundImageMobile
+    : project.backgroundImage;
+
   return (
     <div
       className="w-full h-[390px] overflow-hidden relative bg-cover bg-center cursor-pointer transition-transform hover:scale-[1.02] border-4 md:border-[12px] border-white"
       style={{
-        backgroundImage: `url(${project.backgroundImage})`,
+        backgroundImage: `url(${bgImage})`,
         '--border-thick': borders.thick
       }}
       onClick={onClick}
