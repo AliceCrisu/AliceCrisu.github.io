@@ -356,7 +356,7 @@ const ProjectDetail = ({ project, onClose, onSwitchProject }) => {
                 // Special case for "this" project - lightbulb in document flow
                 if (project.id === 'this') {
                   return (
-                    <div className="flex justify-end" style={{ marginTop: '-140px', marginRight: '15%' }}>
+                    <div className="flex justify-end -mt-[70px] md:-mt-[140px]" style={{ marginRight: '15%' }}>
                       <div className="relative">
                         {/* Main large halo */}
                         <div
