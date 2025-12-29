@@ -1,0 +1,1 @@
+- Padding lateral mobil, 

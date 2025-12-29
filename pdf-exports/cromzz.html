@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cromzz - Case Study</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            font-size: 11pt;
+        }
+
+        .cover {
+            text-align: center;
+            padding: 60px 0;
+            page-break-after: always;
+        }
+
+        .cover h1 {
+            font-size: 42pt;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #111;
+        }
+
+        .cover .subtitle {
+            font-size: 14pt;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .cover img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 18pt;
+            font-weight: 600;
+            color: #111;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 14pt;
+            font-weight: 600;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+
+        ul {
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #111;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .image-container {
+            margin: 24px 0;
+            text-align: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .image-right {
+            float: right;
+            margin: 0 0 20px 30px;
+            max-width: 45%;
+        }
+
+        .image-right img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #eee;
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover">
+        <h1>Cromzz</h1>
+        <p class="subtitle">Fitness Tech Platform - UX Case Study</p>
+        <img src="../public/projects/cromzz/overview.jpeg" alt="Cromzz Overview">
+    </div>
+
+    <div class="section">
+        <h2>Overview</h2>
+        <p>Cromzz is a fitness-tech startup focused on supporting gym users through data-driven insights and motivation. The product combines a physical tracking device connected to a mobile application, transforming heavy workout data into personalized, easy-to-understand metrics.</p>
+        <p>Beyond tracking performance, Cromzz aims to increase user retention through gamification, enabling users to compete with each other, track progress over time, and stay engaged through challenges, rankings, and rewards.</p>
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>Problem</h2>
+        <p>Most fitness applications either focus on basic tracking or overwhelm users with raw data that lacks clear meaning. While gym-goers generate large amounts of performance data, this information is often difficult to interpret, poorly visualized, or disconnected from real training goals.</p>
+        <p>Additionally, user retention in fitness apps is notoriously low. Without motivation, social interaction, or a sense of progress, users tend to abandon tracking tools after a short period of time.</p>
+        <p>Cromzz needed a solution that could simplify complex data, personalize insights, and create an engaging experience that motivates users to return consistently.</p>
+    </div>
+
+    <hr>
+
+    <div class="section clearfix">
+        <h2>Challenges</h2>
+        <div class="image-right">
+            <img src="../public/projects/cromzz/overall.png" alt="Overall View">
+        </div>
+        <p>A key challenge was translating complex workout data into metrics that feel personal, motivating, and easy to understand across different fitness levels. At the same time, the product needed a gamification layer that encourages progress without creating frustration, pressure, or unhealthy competition.</p>
+        <p>An additional UX challenge came from working with hardware. The mobile application acts as the bridge between the user and a physical tracking device, requiring a deep understanding of how users interact with the hardware, what data it can reliably provide, and how that data should be interpreted.</p>
+        <p>From a design perspective, the goal was to translate business and technical constraints into a seamless experience perceived as a single, cohesive product, rather than two separate entities (hardware and software).</p>
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>Discovery &amp; Platform Audit</h2>
+        <p>The process began with an analysis of existing fitness apps, tracking devices, and competitive platforms, focusing on data visualization, progress communication, and common disengagement points.</p>
+        <p>This phase revealed an opportunity to simplify the entire data ecosystem into four core, easy-to-understand metrics:</p>
+        <ul>
+            <li><strong>Evolution</strong> - progress over time compared to past performance</li>
+            <li><strong>Smoothness</strong> - precision and execution quality</li>
+            <li><strong>Endurance</strong> - consistency of execution speed across repetitions</li>
+            <li><strong>Control</strong> - rhythm stability between reps</li>
+        </ul>
+        <p>These metrics became the foundation for translating heavy data into meaningful feedback.</p>
+    </div>
+
+    <hr>
+
+    <div class="section clearfix">
+        <h2>User, Roles &amp; Business Alignment</h2>
+        <div class="image-right">
+            <img src="../public/projects/cromzz/ramat.png" alt="Ramat View">
+        </div>
+        <p>Primary users were identified as active gym-goers across multiple experience levels, all sharing the need for clarity, motivation, and visible progress. From a business standpoint, retention and engagement were the key success metrics.</p>
+        <p>During this phase, we identified critical risks related to gamification in fitness:</p>
+        <ul>
+            <li>Users tend to compare themselves with the very top or bottom of a leaderboard, rarely with nearby positions.</li>
+            <li>Excessive competition can lead to frustration, while the drive to be first can result in overtraining or injury.</li>
+        </ul>
+        <p>As a result, the interface was designed to promote fair and controlled comparison. Users can only compete with friends they actively add to their list, encouraging friendly competition while reducing pressure and preventing unhealthy behavior.</p>
+    </div>
+
+    <hr>
+
+    <div class="section clearfix">
+        <h2>Wireframing &amp; Interaction Design</h2>
+        <div class="image-right">
+            <img src="../public/projects/cromzz/competition.png" alt="Competition Screen">
+        </div>
+        <p>Low-fidelity wireframes were used to explore multiple ways of presenting performance data, workout plans, and competitive elements, with a strong focus on data-heavy screens such as summaries, charts, and leaderboards.</p>
+        <p>The conclusion of this phase was twofold:</p>
+        <p>First, the product required multiple layout types - table-based views for detailed analysis, card and bento layouts for high-level insights, and hybrid structures optimized for quick decision-making. This was driven by the gym context, where users typically have only 10-15 seconds between sets to take out their phone, scan the screen, and understand their metrics.</p>
+        <p>Second, through prototyping and A/B testing, we discovered that points needed to take priority over ranking. Points represent personal progress and self-improvement, while ranking remains a secondary layer for users who actively seek comparison. This approach ensured that insights are immediately understandable, even in short interaction windows, while still supporting competitive behavior when desired.</p>
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>Data Visualization &amp; Gamification Design</h2>
+        <p>A dedicated design phase focused on transforming raw workout data into intuitive visual components such as progress rings, performance curves, and comparative metrics.</p>
+        <p>Gamification elements - including scores, ranks, streaks, and challenges - were carefully integrated into the experience to enhance motivation without distracting from core fitness goals.</p>
+        <p>The design emphasized quick readability, emotional feedback, and a <strong>clear sense of achievement</strong>.</p>
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>Visual Design &amp; Consistency</h2>
+        <p>The visual language was designed to feel energetic, modern, and performance-driven, while remaining readable in low-light gym environments.</p>
+        <p>Color was used strategically to highlight progress, improvements, and competitive status, reinforcing motivation through visual feedback. Consistency across screens ensured that users could easily move between tracking, planning, and competition without relearning interactions.</p>
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>Validation &amp; Iteration</h2>
+        <p>Design decisions were continuously refined based on usability considerations and feedback loops. Iterations focused on improving data legibility, reducing cognitive load, and ensuring that competitive features felt inclusive and encouraging for all users.</p>
+    </div>
+
+    <div class="image-container">
+        <img src="../public/projects/cromzz/create.png" alt="Create Screen">
+    </div>
+</body>
+</html>

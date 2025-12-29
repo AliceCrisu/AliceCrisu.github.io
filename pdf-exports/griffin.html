@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Griffin - Case Study</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            font-size: 11pt;
+        }
+
+        .cover {
+            text-align: center;
+            padding: 60px 0;
+            page-break-after: always;
+        }
+
+        .cover h1 {
+            font-size: 42pt;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #111;
+        }
+
+        .cover .subtitle {
+            font-size: 14pt;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .cover img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 18pt;
+            font-weight: 600;
+            color: #111;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 14pt;
+            font-weight: 600;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+
+        ul {
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #111;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .image-container {
+            margin: 24px 0;
+            text-align: center;
+            page-break-inside: avoid;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #eee;
+            margin: 40px 0;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body>
+    <div class="cover">
+        <h1>Griffin</h1>
+        <p class="subtitle">Strategic Operations Platform - UX Case Study</p>
+        <img src="../public/projects/griffin/Cover.png" alt="Griffin Cover">
+    </div>
+
+    <div class="section">
+        <h2>Overview</h2>
+        <p>Griffin is a strategic operations platform that centralizes cash flow management, transaction oversight, customer management, and marketing campaign execution into a single, unified system.</p>
+        <p>Built to support business-critical workflows, Griffin enables real-time collaboration across teams, providing clarity, control, and consistency in complex operational environments. Its design prioritizes transparency, scalability, and usability, empowering organizations to make informed decisions and manage risk with confidence.</p>
+    </div>
+
+    <div class="image-container">
+        <img src="../public/projects/griffin/Overview.png" alt="Griffin Overview">
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>Problem</h2>
+        <p>Before Griffin was developed, the business relied on a legacy in-house platform combined with multiple external tools to extract and analyze key metrics. This ecosystem was primarily designed for data visualization, offering limited interactivity and a non-intuitive user interface.</p>
+        <p>Information architecture was fragmented and difficult to navigate, making it challenging for users to understand relationships between data sets. As a B2B organization managing multiple platforms and sites, the lack of a clear and scalable hierarchy became a critical issue.</p>
+        <p>Operational complexity increased, workflows were inefficient, and onboarding new employees required extensive training - often taking several months depending on the department.</p>
+        <p>These limitations highlighted the need for a unified, user-centered system capable of supporting complex structures while remaining accessible and efficient.</p>
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>Challenge</h2>
+        <p>One of the more atypical challenges was identifying and preserving the core value of the legacy platform, while simultaneously removing its rigid structure and unfriendly interface. This required a deep understanding of existing workflows to ensure that critical functionality was retained without carrying over outdated design patterns or constraints.</p>
+        <p>Another key challenge was determining which capabilities needed to be consolidated into the new platform in order to reduce dependency on multiple external tools. This involved designing a clear, scalable hierarchy and information architecture capable of supporting heavy data and complex metrics, while remaining intuitive and easy to navigate.</p>
+        <p>A central design goal was to introduce robust editing and configuration capabilities across the platform. Each page required a tailored design and interaction model to support its specific use case, yet the overall experience needed to remain cohesive, consistent, and aligned with a unified design system.</p>
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>Design Process</h2>
+
+        <h3>Discovery and Platform Audit</h3>
+        <p>The process began with a comprehensive audit of the legacy in-house platform and the surrounding ecosystem of tools. The goal was to identify the platform's true core value, understand critical business workflows, and uncover usability and structural pain points.</p>
+        <p>Special attention was given to how data, hierarchy, and permissions were handled across multiple managed sites.</p>
+    </div>
+
+    <div class="image-container">
+        <img src="../public/projects/griffin/discovery.png" alt="Discovery and Platform Audit">
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h3>Construction of the Phase</h3>
+        <p>During this phase, we identified the need for a dual-branch architecture to support the platform's complexity and the differing needs of internal teams.</p>
+        <p>This led to the definition of two distinct modes of interaction:</p>
+        <ul>
+            <li><strong>User-dependent actions</strong> - which rely on a specific user or ID (such as user management, permissions, and account-level operations)</li>
+            <li><strong>System-level actions</strong> - which focus on creating, configuring, or modifying elements within the platform itself</li>
+        </ul>
+        <p>This distinction became foundational to the platform's information architecture and interaction model.</p>
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>User, Roles &amp; Business Alignment</h2>
+        <p>We collaborated closely with stakeholders across multiple departments to gain a deep understanding of real user needs and overarching business objectives. As a B2B product, special attention was given to user roles, access levels, and the differences between operational, managerial, and executive users.</p>
+        <p>Key insights from this phase revealed that even experienced platform users struggled at times to quickly locate relevant information. Data-heavy tables were difficult to scan and interpret efficiently, increasing cognitive load and slowing down decision-making.</p>
+        <p>Additionally, the lack of filtering capabilities made it challenging for users to isolate relevant data. When issues needed to be flagged or escalated, users often spent hours navigating the platform or coordinating with other teams just to initiate interaction.</p>
+        <p>As a result, we introduced <strong>direct interaction within data tables</strong>, enabling users to act immediately on specific entries, and designed <strong>page-specific filtering sections</strong> to support faster data discovery, clearer insights, and more efficient cross-team collaboration.</p>
+    </div>
+
+    <div class="image-container">
+        <img src="../public/projects/griffin/user.png" alt="User Roles and Business Alignment">
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>Wireframing &amp; Interaction Design</h2>
+        <p>Low-fidelity wireframes were used to rapidly explore layouts, navigation patterns, and interaction models - especially for data-heavy views. This stage allowed for early validation of assumptions and ensured that usability and clarity were prioritized before moving into visual design.</p>
+        <p>The key conclusion from this phase was that a single layout pattern could not effectively support all user needs. To accommodate different use cases and data contexts, we defined multiple layout types:</p>
+        <ul>
+            <li><strong>Table-based layouts</strong> - for detailed analysis</li>
+            <li><strong>Bento-style layouts</strong> - for high-level overviews</li>
+            <li><strong>Hybrid layouts</strong> - that combine both approaches</li>
+        </ul>
+        <p>This flexibility enabled the platform to adapt to varying workflows while maintaining consistency and usability.</p>
+    </div>
+
+    <div class="image-container">
+        <img src="../public/projects/griffin/wireframing.png" alt="Wireframing and Interaction Design">
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>Flexibility &amp; Editing Capabilities</h2>
+        <p>A key objective of Griffin was to introduce advanced editing and configuration capabilities. We designed flexible page structures that allow users to customize content, metrics, and views based on their specific needs.</p>
+        <p>Although each page required a tailored approach, all solutions were built on shared interaction principles to ensure consistency across the platform.</p>
+        <p>This led to the definition of a clear and scalable layout structure:</p>
+        <ul>
+            <li><strong>Left-side panel</strong> - Personalized navigation, adapting to team needs and access levels</li>
+            <li><strong>Top navigation bar</strong> - Second level of navigation, exposing deeper layers of functionality</li>
+            <li><strong>Central area</strong> - Primary content, including data, filters, and contextual information</li>
+            <li><strong>Right-side panel</strong> - Dynamic editing space, allowing configuration without leaving context</li>
+        </ul>
+    </div>
+
+    <div class="image-container">
+        <img src="../public/projects/griffin/flexibility.png" alt="Flexibility and Editing Capabilities">
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>Validation and Design System</h2>
+        <p>Once validated, the designs were translated into a cohesive visual language supported by a scalable design system. This ensured consistency across the product, simplified development handoff, and enabled future expansion without sacrificing usability or clarity.</p>
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>Validation, Iteration &amp; Handoff</h2>
+        <p>Designs were continuously refined based on stakeholder feedback and usability insights. The final phase focused on clear documentation and close collaboration with development teams to ensure a smooth and accurate implementation.</p>
+    </div>
+
+    <div class="image-container">
+        <img src="../public/projects/griffin/final.png" alt="Final Design">
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>Gallery</h2>
+    </div>
+
+    <div class="gallery">
+        <img src="../public/projects/griffin/gallery1.png" alt="Gallery 1">
+        <img src="../public/projects/griffin/gallery2.png" alt="Gallery 2">
+        <img src="../public/projects/griffin/gallery3.png" alt="Gallery 3">
+        <img src="../public/projects/griffin/gallery4.png" alt="Gallery 4">
+    </div>
+</body>
+</html>
